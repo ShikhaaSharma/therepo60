@@ -41,6 +41,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!-- Fully qualified name of your main class -->
+                    <mainClass>com.example.demo.DemoAppApplication</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>
