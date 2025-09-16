@@ -1,0 +1,20 @@
+---
+- name: Deploy application to Kubernetes
+  hosts: k8s_control
+  gather_facts: false
+  become: true
+
+  tasks:
+    - name: Copy k8s manifests to control host
+      copy:
+        src: ../k8s/
+        dest: /tmp/demo-k8s/
+        mode: '0644'
+
+    - name: Apply Kubernetes manifests
+      shell: |
+        kubectl apply -f /tmp/demo-k8s/namespace.yaml
+        kubectl apply -f /tmp/demo-k8s/deployment.yaml
+        kubectl apply -f /tmp/demo-k8s/service.yaml
+      args:
+        executable: /bin/bash
