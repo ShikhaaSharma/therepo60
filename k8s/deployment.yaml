@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: demo-app
-          image: shikha1818/laptoppipeline:latest
+          image: shikha1818/nokeyjob:latest
           ports:
             - containerPort: 8080
           readinessProbe:
