@@ -3,6 +3,8 @@
   hosts: k8s_control
   gather_facts: false
   become: true
+  remote_user: "{{ ansible_user }}"
+
 
   tasks:
     - name: Copy k8s manifests to control host
