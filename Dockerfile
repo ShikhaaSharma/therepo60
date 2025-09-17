@@ -1,5 +1,6 @@
-FROM eclipse-temurin:17-jre-alpine
-ARG JAR_FILE=target/demo-app-0.0.1-SNAPSHOT.jar
-COPY ${JAR_FILE} /app/app.jar
+FROM eclipse-temurin:17-jdk-alpine
+VOLUME /tmp
+COPY target/demo-app-0.0.1-SNAPSHOT.jar /app/app.jar
+WORKDIR /app
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","/app/app.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
