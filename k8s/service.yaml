@@ -4,7 +4,7 @@ metadata:
   name: demo-app
   namespace: demo
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: demo-app
   ports:
