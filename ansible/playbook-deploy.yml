@@ -1,22 +1,18 @@
 ---
-- name: Deploy application to Kubernetes
+- name: Apply existing Kubernetes manifests
   hosts: k8s_control
   gather_facts: false
   become: true
   remote_user: "{{ ansible_user }}"
 
-
   tasks:
-    - name: Copy k8s manifests to control host
-      copy:
-        src: ../k8s/
-        dest: /tmp/
-        mode: '0644'
-
-    - name: Apply Kubernetes manifests
-      shell: |
-        kubectl apply -f /tmp/namespace.yaml
-        kubectl apply -f /tmp/deployment.yaml
-        kubectl apply -f /tmp/service.yaml
+    - name: Apply Deployment manifest
+      shell: kubectl apply -f /tmp/deployment.yaml
       args:
         executable: /bin/bash
+
+    - name: Apply Service manifest
+      shell: kubectl apply -f /tmp/service.yaml
+      args:
+        executable: /bin/bash
+
