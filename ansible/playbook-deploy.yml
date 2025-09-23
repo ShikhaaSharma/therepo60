@@ -10,13 +10,13 @@
     - name: Copy k8s manifests to control host
       copy:
         src: ../k8s/
-        dest: /tmp/demo-k8s/
+        dest: /tmp/
         mode: '0644'
 
     - name: Apply Kubernetes manifests
       shell: |
-        kubectl apply -f /tmp/demo-k8s/namespace.yaml
-        kubectl apply -f /tmp/demo-k8s/deployment.yaml
-        kubectl apply -f /tmp/demo-k8s/service.yaml
+        kubectl apply -f /tmp/namespace.yaml
+        kubectl apply -f /tmp/deployment.yaml
+        kubectl apply -f /tmp/service.yaml
       args:
         executable: /bin/bash
