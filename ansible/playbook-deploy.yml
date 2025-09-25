@@ -6,6 +6,26 @@
   remote_user: "{{ ansible_user }}"
 
   tasks:
+    - name: Copy namespace.yaml
+      copy:
+        src: ../k8s/namespace.yaml
+        dest: /tmp/namespace.yaml
+
+    - name: Copy deployment.yaml
+      copy:
+        src: ../k8s/deployment.yaml
+        dest: /tmp/deployment.yaml
+
+    - name: Copy service.yaml
+      copy:
+        src: ../k8s/service.yaml
+        dest: /tmp/service.yaml
+
+    - name: Apply Namespace manifest
+      shell: kubectl apply -f /tmp/namespace.yaml
+      args:
+        executable: /bin/bash
+
     - name: Apply Deployment manifest
       shell: kubectl apply -f /tmp/deployment.yaml
       args:
@@ -15,4 +35,5 @@
       shell: kubectl apply -f /tmp/service.yaml
       args:
         executable: /bin/bash
+
 
