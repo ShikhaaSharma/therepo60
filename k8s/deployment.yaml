@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: demo-app
-        image: shikha1818/jenkinsmavenpr:latest
+        image: shikha1818/thek8sclusterjob:latest
         ports:
         - containerPort: 8080
         livenessProbe:
